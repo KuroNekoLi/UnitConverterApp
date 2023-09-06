@@ -23,7 +23,7 @@ fun BaseScreen(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun BaseScreenPreview() {
     BaseScreen(Modifier, viewModel())

@@ -1,10 +1,12 @@
 package com.example.unitconverterapp
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 
 //使用者剛進去app時不顯示input field 與 button
 //只有當使用者選擇時才顯示
@@ -25,6 +27,8 @@ fun TopScreen(list: List<Conversion>) {
     }
 
     selectedConversion.value?.let {
-        InputBlock(conversion = it, inputText = inputText, modifier = Modifier)
+        InputBlock(conversion = it, inputText = inputText,modifier = Modifier){ input->
+            Log.i("LinLi", "User typed $input");
+        }
     }
 }
