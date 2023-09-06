@@ -19,7 +19,11 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 
 @Composable
-fun ConversionMenu(list: List<Conversion>,modifier: Modifier = Modifier){
+fun ConversionMenu(
+    list: List<Conversion>,
+    modifier: Modifier = Modifier,
+    convert : (Conversion) -> Unit //要傳遞選中conversion的行為
+){
     var displayingText by remember {mutableStateOf("select the state type")}
     var textFieldSize by remember { mutableStateOf(Size.Zero)} //To assign the dropdown the same width as TextField
     var expanded by remember { mutableStateOf(false)}
@@ -56,6 +60,7 @@ fun ConversionMenu(list: List<Conversion>,modifier: Modifier = Modifier){
                 DropdownMenuItem(onClick = {
                     displayingText = conversion.description
                     expanded = false
+                    convert(conversion) //最後的lambda function所以可以拉出來
                 }) {
                     Text(
                         text = conversion.description,
