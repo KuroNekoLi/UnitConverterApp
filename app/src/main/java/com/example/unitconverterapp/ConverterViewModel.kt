@@ -1,6 +1,7 @@
 package com.example.unitconverterapp
 
 import androidx.lifecycle.ViewModel
+import com.example.unitconverterapp.data.Conversion
 
 class ConverterViewModel : ViewModel(){
     fun getConversions() = listOf(

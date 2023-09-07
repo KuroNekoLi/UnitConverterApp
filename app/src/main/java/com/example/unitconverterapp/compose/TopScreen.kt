@@ -1,4 +1,4 @@
-package com.example.unitconverterapp
+package com.example.unitconverterapp.compose
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -6,13 +6,13 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import com.example.unitconverterapp.data.Conversion
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
 //使用者剛進去app時不顯示input field 與 button
 //只有當使用者選擇時才顯示
-//所以要check selectedConversion是否為空
+//所以要check selectedConversion是否為空.
 @Composable
 fun TopScreen(list: List<Conversion>) {
     val selectedConversion : MutableState<Conversion?> = remember {
