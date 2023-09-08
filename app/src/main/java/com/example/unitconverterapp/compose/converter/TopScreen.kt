@@ -1,4 +1,4 @@
-package com.example.unitconverterapp.compose
+package com.example.unitconverterapp.compose.converter
 
 import android.util.Log
 import androidx.compose.runtime.Composable

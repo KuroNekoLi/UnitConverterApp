@@ -17,6 +17,9 @@ class ConverterViewModel(private val repository: ConverterRepository) : ViewMode
         Conversion(5,"Miles to Kilometers","mi","km",1.60934),
         Conversion(6,"Kilometers to Miles","km","mi",0.621371)
     )
+
+    val resultList = repository.getSavedResults()
+
     //在dao與repository中定義insert, delete, delete all為suspending functions
     //所以要在coroutine調用這些函數
     fun addResult(message1:String,message2:String){
