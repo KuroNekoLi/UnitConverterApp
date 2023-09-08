@@ -10,15 +10,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.unitconverterapp.ConverterViewModel
+import com.example.unitconverterapp.ConverterViewModelFactory
 
 @Composable
 fun BaseScreen(
+    factory: ConverterViewModelFactory,
     modifier: Modifier = Modifier, //將預設的modifier設為第一個參數
-    converterViewModel: ConverterViewModel = viewModel()
+    converterViewModel: ConverterViewModel = viewModel(factory = factory)
 ){
     val list = converterViewModel.getConversions()
     Column(modifier = Modifier.padding(30.dp)) {
-        TopScreen(list)
+        TopScreen(list){ message1,message2 ->
+            converterViewModel.addResult(message1,message2)
+        } //為了能調用view model，將message1與2傳遞過去，需要一個lambda
         Spacer(modifier = Modifier.height(20.dp))
         HistoryScreen()
     }
@@ -27,5 +31,5 @@ fun BaseScreen(
 @Preview(showBackground = true)
 @Composable
 fun BaseScreenPreview() {
-    BaseScreen(Modifier, viewModel())
+//    BaseScreen(Modifier, viewModel())
 }

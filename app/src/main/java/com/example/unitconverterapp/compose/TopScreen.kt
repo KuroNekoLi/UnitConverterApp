@@ -14,7 +14,10 @@ import java.text.DecimalFormat
 //只有當使用者選擇時才顯示
 //所以要check selectedConversion是否為空.
 @Composable
-fun TopScreen(list: List<Conversion>) {
+fun TopScreen(
+    list: List<Conversion>,
+    save : (String,String)->Unit
+    ) {
     val selectedConversion : MutableState<Conversion?> = remember {
         mutableStateOf(null) //可能為空值，使用者可能啥都沒選
     }
@@ -29,6 +32,8 @@ fun TopScreen(list: List<Conversion>) {
     ConversionMenu(list = list) {
         //此處的it就是選中的conversion
         selectedConversion.value = it
+        //當使用者從選項單選中conversion後，要將typedValue設為初始值，不然當recomposition時會重複輸入資料
+        typedValue.value = "0.0"
     }
 
     selectedConversion.value?.let {
@@ -52,6 +57,7 @@ fun TopScreen(list: List<Conversion>) {
 
         val message1 = "${typedValue.value} ${selectedConversion.value!!.convertFrom} is equal to"
         val message2 = "$roundedResult ${selectedConversion.value!!.convertTo}"
+        save(message1,message2)
         ResultBlock(message1 = message1, message2 = message2)
     }
 }

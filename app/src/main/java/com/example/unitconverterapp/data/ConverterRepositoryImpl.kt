@@ -4,18 +4,18 @@ import kotlinx.coroutines.flow.Flow
 
 class ConverterRepositoryImpl(private val dao: ConverterDao) : ConverterRepository {
     override suspend fun insertResult(result: ConversionResult) {
-        TODO("Not yet implemented")
+       dao.insertResult(result)
     }
 
     override suspend fun deleteResult(result: ConversionResult) {
-        TODO("Not yet implemented")
+        dao.deleteResult(result)
     }
 
     override suspend fun deleteAllResults() {
-        TODO("Not yet implemented")
+        dao.deleteAll()
     }
 
     override fun getSavedResults(): Flow<List<ConversionResult>> {
-        TODO("Not yet implemented")
+        return dao.getResults()
     }
 }
