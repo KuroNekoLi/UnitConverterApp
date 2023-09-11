@@ -38,7 +38,7 @@ fun HistoryItem(
             Text(text = messagePart1, fontSize = 20.sp)
             Text(text = messagePart2, fontSize = 20.sp, color = Color.Blue, fontWeight = FontWeight.Bold)
         }
-        IconButton(onClick = { onClose }) {
+        IconButton(onClick = { onClose() }) {
             Icon(Icons.Filled.Close, contentDescription = "close")
             
         }
